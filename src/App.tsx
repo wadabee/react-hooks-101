@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const App = () => {
   const initialStates = {
@@ -9,6 +9,18 @@ const App = () => {
   const [state, setState] = useState(initialStates);
 
   const { name, price } = state;
+
+  useEffect(() => {
+    console.log("This is like componentDidMount or componentDidUpdate");
+  });
+
+  useEffect(() => {
+    console.log("This is like componentDidMount");
+  }, []);
+
+  useEffect(() => {
+    console.log("This callback is for name only.");
+  }, [name]);
 
   return (
     <>
