@@ -1,16 +1,16 @@
-type Action = {
+export type Action = {
   type: "CREATE_EVENT" | "DELETE_EVENT" | "DELETE_ALL_EVENTS";
   title: string;
   body: string;
 };
 
-type Event = {
+export type Event = {
   id: number;
   title: string;
   body: string;
 };
 
-const events = (state: Array<Event> = [], action: Action) => {
+export const reducer = (state: Array<Event> = [], action: Action) => {
   switch (action.type) {
     case "CREATE_EVENT":
       const event: Event = {
@@ -30,5 +30,3 @@ const events = (state: Array<Event> = [], action: Action) => {
       return state;
   }
 };
-
-export default events;
