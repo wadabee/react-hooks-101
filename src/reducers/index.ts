@@ -25,7 +25,7 @@ export const reducer = (state: Array<Event> = [], action: Action) => {
       return state.filter((e) => e.id !== action.id);
 
     case "DELETE_ALL_EVENTS":
-      return state;
+      return [];
 
     default:
       return state;

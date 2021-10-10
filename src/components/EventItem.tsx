@@ -9,10 +9,12 @@ type Props = {
 const EventItem: React.FC<Props> = (props) => {
   const id = props.event.id;
   const handleClickDeleteButton = () => {
-    props.dispatch({
-      type: "DELETE_EVENT",
-      id: id,
-    });
+    if (window.confirm(`イベント（id=${id}）を削除しますか？`)) {
+      props.dispatch({
+        type: "DELETE_EVENT",
+        id: id,
+      });
+    }
   };
 
   return (
