@@ -1,9 +1,16 @@
-export type Action = {
-  type: "CREATE_EVENT" | "DELETE_EVENT" | "DELETE_ALL_EVENTS";
-  id?: number;
-  title?: string;
-  body?: string;
-};
+export type Action =
+  | {
+      type: "CREATE_EVENT";
+      title: string;
+      body: string;
+    }
+  | {
+      type: "DELETE_EVENT";
+      id: number;
+    }
+  | {
+      type: "DELETE_ALL_EVENTS";
+    };
 
 export type Event = {
   id: number;
