@@ -1,7 +1,8 @@
 export type Action = {
   type: "CREATE_EVENT" | "DELETE_EVENT" | "DELETE_ALL_EVENTS";
-  title: string;
-  body: string;
+  id?: number;
+  title?: string;
+  body?: string;
 };
 
 export type Event = {
@@ -15,13 +16,13 @@ export const reducer = (state: Array<Event> = [], action: Action) => {
     case "CREATE_EVENT":
       const event: Event = {
         id: state.length === 0 ? 1 : state[state.length - 1].id + 1,
-        title: action.title,
-        body: action.body,
+        title: action.title || "",
+        body: action.body || "",
       };
       return [...state, event];
 
     case "DELETE_EVENT":
-      return state;
+      return state.filter((e) => e.id !== action.id);
 
     case "DELETE_ALL_EVENTS":
       return state;
