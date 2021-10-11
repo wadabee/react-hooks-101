@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "../contexts/AppContext";
 import { Action, Event } from "../reducers";
 import EventItem from "./EventItem";
 
@@ -8,8 +9,10 @@ type props = {
 };
 
 const Events: React.FC<props> = ({ state, dispatch }) => {
+  const value = useContext(AppContext);
   return (
     <>
+      <div>{value}</div>
       <h4>イベント一覧</h4>
       <table className="table table-hover">
         <thead>
