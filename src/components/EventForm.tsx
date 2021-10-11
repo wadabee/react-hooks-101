@@ -1,12 +1,8 @@
-import React, { useState } from "react";
-import { Action, Event } from "../reducers";
+import React, { useContext, useState } from "react";
+import AppContext from "../contexts/AppContext";
 
-type props = {
-  state: Array<Event>;
-  dispatch: React.Dispatch<Action>;
-};
-
-const EventForm: React.FC<props> = ({ state, dispatch }) => {
+const EventForm: React.FC = () => {
+  const { state, dispatch } = useContext(AppContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 

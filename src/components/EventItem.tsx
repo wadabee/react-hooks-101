@@ -1,16 +1,18 @@
-import React from "react";
-import { Action, Event } from "../reducers";
+import React, { useContext } from "react";
+import AppContext from "../contexts/AppContext";
+import { Event } from "../reducers";
 
 type Props = {
   event: Event;
-  dispatch: React.Dispatch<Action>;
 };
 
 const EventItem: React.FC<Props> = (props) => {
+  const { dispatch } = useContext(AppContext);
+
   const id = props.event.id;
   const handleClickDeleteButton = () => {
     if (window.confirm(`イベント（id=${id}）を削除しますか？`)) {
-      props.dispatch({
+      dispatch({
         type: "DELETE_EVENT",
         id: id,
       });

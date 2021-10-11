@@ -1,18 +1,11 @@
 import React, { useContext } from "react";
 import AppContext from "../contexts/AppContext";
-import { Action, Event } from "../reducers";
 import EventItem from "./EventItem";
 
-type props = {
-  state: Array<Event>;
-  dispatch: React.Dispatch<Action>;
-};
-
-const Events: React.FC<props> = ({ state, dispatch }) => {
-  const value = useContext(AppContext);
+const Events: React.FC = () => {
+  const { state } = useContext(AppContext);
   return (
     <>
-      <div>{value}</div>
       <h4>イベント一覧</h4>
       <table className="table table-hover">
         <thead>
@@ -25,7 +18,7 @@ const Events: React.FC<props> = ({ state, dispatch }) => {
         </thead>
         <tbody>
           {state.map((e, idx) => (
-            <EventItem key={idx} event={e} dispatch={dispatch} />
+            <EventItem key={idx} event={e} />
           ))}
         </tbody>
       </table>
